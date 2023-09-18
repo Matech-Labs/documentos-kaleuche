@@ -43,7 +43,12 @@
   align-items: center;
   padding: 5px;
   border: 1px solid $gray;
-  width: 300px;
+  width: 400px;
+  margin: 4px ;
+}
+
+.pdfListItem:hover{
+  box-shadow: 0 2px 8px #bbb;
 }
 
 .fileInfo {

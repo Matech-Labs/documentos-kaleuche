@@ -9,8 +9,8 @@ import Image from "next/image";
 
 const FileListModal = ({ files, fileName, closeModal }) => {
 
-  console.log({fileName})
-  console.log({files})
+  // console.log({fileName})
+  // console.log({files})
 
   return (
     <div className={styles.container}>

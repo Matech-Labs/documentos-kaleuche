@@ -43,7 +43,7 @@ const page = async () => {
   };
 
   // Imprime la estructura JSON
-  console.log(JSON.stringify(root, null, 2));
+//   console.log(JSON.stringify(root, null, 2));
 
   // También puedes retornar la estructura JSON si lo necesitas
   return root;

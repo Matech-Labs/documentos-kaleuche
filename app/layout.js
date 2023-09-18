@@ -1,3 +1,4 @@
+import styles from "./page.module.scss";
 import Navbar from "/components/Navbar";
 
 export default function RootLayout({ children }) {
@@ -6,8 +7,9 @@ export default function RootLayout({ children }) {
       <head>
         <title>Documentos Kaleuche</title>
       </head>
-      <body>
-        <Navbar></Navbar>
+      <body className={styles.bodyContainer}>
+        <h1 className={styles.mainTitle}>Documentos Kaleuche</h1>
+        {/* <Navbar></Navbar> */}
         <main>{children}</main>
       </body>
     </html>

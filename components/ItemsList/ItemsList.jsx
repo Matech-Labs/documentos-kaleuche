@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ItemsList.module.scss";
-import pdfIcon from "@assets/images/icons/pdfIcon.png";
-import docsIcon from "@assets/images/icons/docsIcon.png";
+import pdfIcon from "@assets/images/icons/pdfIcon4.png";
+import docsIcon from "@assets/images/icons/docsIcon2.png";
 import { DownloadButton } from "../ui/buttons/DownloadButton/DownloadButton";
 import Image from "next/image";
 
