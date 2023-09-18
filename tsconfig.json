@@ -23,16 +23,35 @@
     ],
     "baseUrl": "./app",
     "paths": {
-      "@components/*": ["./components/*"],
-      "@pages/*": ["./pages/*"],
-      "@constants/*": ["./constants/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@scss/*": ["./scss/*"],
-      "@data/*": ["./data/*"],
-      "@assets/*": ["./assets/*"],
-      "@services/*": ["./services/*"],
-      "@archivos/*": ["./archivos/*"]
-    }
+      "@components/*": [
+        "./components/*"
+      ],
+      "@pages/*": [
+        "./pages/*"
+      ],
+      "@constants/*": [
+        "./constants/*"
+      ],
+      "@hooks/*": [
+        "./hooks/*"
+      ],
+      "@scss/*": [
+        "./scss/*"
+      ],
+      "@data/*": [
+        "./data/*"
+      ],
+      "@assets/*": [
+        "./assets/*"
+      ],
+      "@services/*": [
+        "./services/*"
+      ],
+      "@archivos/*": [
+        "./archivos/*"
+      ]
+    },
+    "strictNullChecks": true
   },
   "include": [
     "next-env.d.ts",

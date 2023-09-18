@@ -10,7 +10,7 @@ import Image from "next/image";
 const FileListModal = ({ files, fileName, closeModal }) => {
 
   // console.log({fileName})
-  // console.log({files})
+  console.log('files:,',{files})
 
   return (
     <div className={styles.container}>
@@ -30,7 +30,7 @@ const FileListModal = ({ files, fileName, closeModal }) => {
           </div>
           <div className={styles.downloadAll}>
             <p className={styles.downloadText}>Descargar Todo</p>
-            <DownloadButton />
+            {/* <DownloadButton /> */}
           </div>
         </div>
       </div>

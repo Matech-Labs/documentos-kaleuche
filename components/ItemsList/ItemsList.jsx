@@ -19,7 +19,7 @@ function ItemsList({ files }) {
                 <span className={styles.fileName}>{file.name}</span>
               </div>
               <div className={styles.buttons}>
-                <DownloadButton id={file.id}/>
+                <DownloadButton file={file}/>
               </div>
             </div>
           </li>

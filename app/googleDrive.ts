@@ -81,7 +81,8 @@ export async function generatePublicUrl(id) {
 
     response.data
       .on("end", () => {
-        console.log(`Downloaded "${fileName}" to "${downloadPath}"`);
+        return downloadPath;
+        // console.log(`Downloaded "${fileName}" to "${downloadPath}"`);
       })
       .on("error", (err) => {
         console.error("Error downloading file:", err);
