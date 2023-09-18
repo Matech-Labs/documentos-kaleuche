@@ -1,0 +1,23 @@
+// [------------------------------ FONTS ------------------------------]
+
+$futura: "Futura";
+
+// [--------------------------- FONT WEIGHT ---------------------------]
+
+$light: 300;
+$regular: 400;
+$medium: 600;
+$bold: 800;
+
+// [----------------------------- MIXINS ------------------------------]
+
+@mixin heading1 {
+  font-family: $futura;
+  font-weight: $medium;
+  font-size: 44px;
+  letter-spacing: -1px;
+  line-height: 48px;
+}
+
+// [--------------------- GLOBAL TYPOGRAPHY CLASSES -------------------]
+

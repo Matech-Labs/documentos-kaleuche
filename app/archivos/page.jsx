@@ -1,6 +1,6 @@
 import { getData } from "../googleDrive"
+import Home from '../../components/Home/Home'
 import FileList from "/components/FileList";
-
 
 const page = async () => {
   const data = await getData()
@@ -8,9 +8,7 @@ const page = async () => {
   // console.log('cuantos archivos hay?', data.length)
   
   return (
-    <div>
-      <FileList data={data} />
-    </div>
+    <Home data={data}/>
   )
 }
 
