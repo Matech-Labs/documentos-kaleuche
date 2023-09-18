@@ -1,4 +1,6 @@
 import { google } from "googleapis";
+const path = require("path");
+const fs = require("fs");
 
 const CLIENT_ID =
   "445048192640-fpd9eiig42ufof1hhtu1i54e5l1qrfmo.apps.googleusercontent.com";
@@ -26,8 +28,6 @@ export const getData = async () => {
   return files;
 };
 
-
-
 async function listDriveStructure(folderId = "root") {
   try {
     const folderMap = {};
@@ -53,29 +53,41 @@ async function listDriveStructure(folderId = "root") {
 
     return folderMap;
   } catch (error) {
-    console.log(error.response.data);
+    // console.log(error.response.data);
     return null; // Manejo de error personalizado
   }
 }
 
-async function downloadFile(fileId) {
+export async function generatePublicUrl(id) {
+  const fileId = id;
   try {
-    const response = await drive.files.get({
+    const fileInfo = await drive.files.get({
       fileId: fileId,
-      alt: "media", 
+      fields: "name",
     });
 
-    // response.data contendrá el contenido del archivo
-    const fileContent = response.data;
-    return fileContent;
+    const fileName = fileInfo.data.name;
+
+    const response = await drive.files.get(
+      {
+        fileId: fileId,
+        alt: "media",
+      },
+      { responseType: "stream" }
+    );
+
+    const downloadPath = path.join(__dirname, fileName);
+    const dest = fs.createWriteStream(downloadPath);
+
+    response.data
+      .on("end", () => {
+        console.log(`Downloaded "${fileName}" to "${downloadPath}"`);
+      })
+      .on("error", (err) => {
+        console.error("Error downloading file:", err);
+      })
+      .pipe(dest);
   } catch (error) {
-    console.error("Error al descargar el archivo:", error);
-    return null;
+    console.log(error.message);
   }
 }
-
-export const getDownloadFiles = async (id) => {
-  const files = await downloadFile(id);
-
-  return files;
-};
