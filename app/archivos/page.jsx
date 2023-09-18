@@ -1,16 +1,12 @@
-import { getData } from "../googleDrive"
-import Home from '../../components/Home/Home'
-import FileList from "/components/FileList";
+import { getData } from "../googleDrive";
+import Home from "../../components/Home/Home";
+import jsonData from "../fileParse/page";
 
 const page = async () => {
-  const data = await getData()
-  console.log(data)
-  // console.log('cuantos archivos hay?', data.length)
-  
-  return (
-    <Home data={data}/>
-  )
-}
+  const response = await jsonData();
+
+  return <Home data={response} />;
+};
 
 export const getStaticProps = async () => {
   const data = await getData();
@@ -21,4 +17,4 @@ export const getStaticProps = async () => {
   };
 };
 
-export default page
+export default page;

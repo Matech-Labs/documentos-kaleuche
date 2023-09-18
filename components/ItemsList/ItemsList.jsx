@@ -1,30 +1,25 @@
 import React from "react";
 import styles from "./ItemsList.module.scss";
-import visualizeIcon from "@assets/images/icons/visualizeIcon.png";
-
 import pdfIcon from "@assets/images/icons/pdfIcon.png";
+import docsIcon from "@assets/images/icons/docsIcon.png";
 import { DownloadButton } from "../ui/buttons/DownloadButton/DownloadButton";
 import Image from "next/image";
 
 function ItemsList({ files }) {
+  const filteredFiles = files.filter((file) => file.extension !== ".DS_Store");
+
   return (
     <div className={styles.container}>
       <ul className={styles.fileList}>
-        {files.map((file, index) => (
+        {filteredFiles.map((file, index) => (
           <li key={index} className={styles.pdfListItem}>
             <div className={styles.fileInfo}>
               <div className={styles.leftFileContainer}>
-                <Image src={pdfIcon} alt="pdfIcon" className={styles.icon} />
-                <span className={styles.fileName}>{file}</span>
+                <Image src={file.extension === '.pdf' ? pdfIcon : docsIcon} alt="icon" className={styles.icon} />
+                <span className={styles.fileName}>{file.name}</span>
               </div>
               <div className={styles.buttons}>
-                <Image
-                  src={visualizeIcon}
-                  alt="visualize"
-                  className={styles.icon}
-                  onClick={() => console.log("Visualizar")}
-                />
-                <DownloadButton />
+                <DownloadButton id={file.id}/>
               </div>
             </div>
           </li>

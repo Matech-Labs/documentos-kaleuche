@@ -26,6 +26,8 @@ export const getData = async () => {
   return files;
 };
 
+
+
 async function listDriveStructure(folderId = "root") {
   try {
     const folderMap = {};
@@ -55,3 +57,25 @@ async function listDriveStructure(folderId = "root") {
     return null; // Manejo de error personalizado
   }
 }
+
+async function downloadFile(fileId) {
+  try {
+    const response = await drive.files.get({
+      fileId: fileId,
+      alt: "media", 
+    });
+
+    // response.data contendrá el contenido del archivo
+    const fileContent = response.data;
+    return fileContent;
+  } catch (error) {
+    console.error("Error al descargar el archivo:", error);
+    return null;
+  }
+}
+
+export const getDownloadFiles = async (id) => {
+  const files = await downloadFile(id);
+
+  return files;
+};
