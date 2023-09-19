@@ -10,6 +10,7 @@ export const DownloadButton = ({ file }) => {
 
     try {
       const response = await fetch(`/api/downloadFile?id=${id}`);
+
       if (response.ok) {
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);

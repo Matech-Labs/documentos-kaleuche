@@ -1,28 +1,54 @@
 // Importa las dependencias necesariasconst fs = require("fs");
 const fs = require("fs");
-import { generatePublicUrl } from "googleDrive";
 import { NextApiRequest, NextApiResponse } from "next";
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+import { drive } from "googleDrive";
+
+const handler = async (req: NextApiRequest, nextResponse: NextApiResponse) => {
   try {
     const { id } = req.query;
-    const filePath = await generatePublicUrl(id);
+    const fileId = id as string;
 
-    res.setHeader("Content-Disposition", `attachment; filename="${filePath}"`);
-    res.setHeader("Content-Type", "application/octet-stream");
+    if (!fileId) {
+      throw new Error("Falta el parámetro ID");
+    }
 
-    const fileStream = fs.createReadStream(filePath);
-    fileStream.pipe(res);
+    const fileInfo = await drive.files.get({
+      fileId,
+      fields: "name",
+    });
 
-    // if (!id) {
-    //   return res.status(400).json({ error: "Falta el parámetro ID" });
-    // }
+    const fileName = fileInfo.data.name;
 
-    // return res
-    //   .status(200)
-    //   .json({ mensaje: "URL pública generada exitosamente" });
+    const driveResponse = await drive.files.get(
+      {
+        fileId,
+        alt: "media",
+      },
+      { responseType: "stream" }
+    );
+
+    nextResponse.setHeader(
+      "Content-Disposition",
+      `attachment; filename="${fileName}"`
+    );
+    nextResponse.setHeader(
+      "Content-Type",
+      driveResponse.headers["content-type"]
+    );
+
+    driveResponse.data
+      .on("end", () => {
+        console.log(`Descargado "${fileName}"`);
+      })
+      .on("error", (err) => {
+        console.error("Error al descargar el archivo:", err);
+      })
+      .pipe(nextResponse);
   } catch (error) {
     console.error("Error:", error);
-    return res.status(500).json({ error: "Error interno del servidor" });
+    return nextResponse
+      .status(500)
+      .json({ error: "Error interno del servidor" });
   }
 };
 

@@ -15,11 +15,15 @@ function ItemsList({ files }) {
           <li key={index} className={styles.pdfListItem}>
             <div className={styles.fileInfo}>
               <div className={styles.leftFileContainer}>
-                <Image src={file.extension === '.pdf' ? pdfIcon : docsIcon} alt="icon" className={styles.icon} />
+                <Image
+                  src={file.extension === ".pdf" ? pdfIcon : docsIcon}
+                  alt="icon"
+                  className={styles.icon}
+                />
                 <span className={styles.fileName}>{file.name}</span>
               </div>
               <div className={styles.buttons}>
-                <DownloadButton file={file}/>
+                <DownloadButton file={file} />
               </div>
             </div>
           </li>

@@ -17,7 +17,7 @@ const oauth2Client = new google.auth.OAuth2(
 
 oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
-const drive = google.drive({
+export const drive = google.drive({
   version: "v3",
   auth: oauth2Client,
 });
@@ -36,12 +36,21 @@ async function listDriveStructure(folderId = "root") {
       q: `'${folderId}' in parents`,
       fields: "files(id, name, mimeType)",
     });
+
+    if (!filesList || !filesList?.data || !filesList.data.files) {
+      return null; // Manejo de error personalizado
+    }
+
     if (filesList.data.files.length === 0) {
       return folderMap;
     }
 
     for (const file of filesList.data.files) {
       if (file.mimeType === "application/vnd.google-apps.folder") {
+        if (!file || !file.id || !file.name) {
+          return null; // Manejo de error personalizado
+        }
+
         // Si es una carpeta, llama a la función recursivamente
         folderMap[file.name] = await listDriveStructure(file.id);
       } else {
@@ -55,40 +64,5 @@ async function listDriveStructure(folderId = "root") {
   } catch (error) {
     // console.log(error.response.data);
     return null; // Manejo de error personalizado
-  }
-}
-
-export async function generatePublicUrl(id) {
-  const fileId = id;
-  try {
-    const fileInfo = await drive.files.get({
-      fileId: fileId,
-      fields: "name",
-    });
-
-    const fileName = fileInfo.data.name;
-
-    const response = await drive.files.get(
-      {
-        fileId: fileId,
-        alt: "media",
-      },
-      { responseType: "stream" }
-    );
-
-    const downloadPath = path.join(__dirname, fileName);
-    const dest = fs.createWriteStream(downloadPath);
-
-    response.data
-      .on("end", () => {
-        return downloadPath;
-        // console.log(`Downloaded "${fileName}" to "${downloadPath}"`);
-      })
-      .on("error", (err) => {
-        console.error("Error downloading file:", err);
-      })
-      .pipe(dest);
-  } catch (error) {
-    console.log(error.message);
   }
 }

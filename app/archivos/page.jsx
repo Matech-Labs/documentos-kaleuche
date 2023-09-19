@@ -8,13 +8,4 @@ const page = async () => {
   return <Home data={response} />;
 };
 
-export const getStaticProps = async () => {
-  const data = await getData();
-  return {
-    props: {
-      data,
-    },
-  };
-};
-
 export default page;
