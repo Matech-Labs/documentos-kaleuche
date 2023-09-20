@@ -1,5 +1,4 @@
 import styles from "./page.module.scss";
-import Navbar from "/components/Navbar";
 
 export default function RootLayout({ children }) {
   return (
@@ -9,7 +8,6 @@ export default function RootLayout({ children }) {
       </head>
       <body className={styles.bodyContainer}>
         <h1 className={styles.mainTitle}>Documentos Kaleuche</h1>
-        {/* <Navbar></Navbar> */}
         <main>{children}</main>
       </body>
     </html>

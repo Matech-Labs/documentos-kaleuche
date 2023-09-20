@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import styles from "./Home.module.scss";
@@ -10,15 +10,15 @@ const Home = ({ data }) => {
   const informes = jsonData[0];
   const antecedentes = jsonData[1];
 
-  console.log(antecedentes)
-
   const [informesOpen, setInformesOpen] = useState(false);
   const [antecedentesOpen, setAntecedentesOpen] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [selectedFileName, setSelectedFileName] = useState(null);
+  const [folderId, setFolderId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleOpenModal = (item) => {
+    setFolderId(item.children[0].id);
     setSelectedFiles(item.children[0].children);
     setSelectedFileName(item.id);
     setModalOpen(true);
@@ -33,7 +33,10 @@ const Home = ({ data }) => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.leftContent}>
-        <div className={styles.button} onClick={() => setInformesOpen(!informesOpen)}>
+        <div
+          className={styles.button}
+          onClick={() => setInformesOpen(!informesOpen)}
+        >
           {informes.id}
         </div>
         {informesOpen &&
@@ -49,7 +52,10 @@ const Home = ({ data }) => {
       </div>
 
       <div className={styles.rightContent}>
-        <div className={styles.button} onClick={() => setAntecedentesOpen(!antecedentesOpen)}>
+        <div
+          className={styles.button}
+          onClick={() => setAntecedentesOpen(!antecedentesOpen)}
+        >
           {antecedentes.id}
         </div>
         {antecedentesOpen &&
@@ -66,6 +72,7 @@ const Home = ({ data }) => {
 
       {modalOpen && (
         <FileListModal
+          folderId={folderId}
           files={selectedFiles}
           fileName={selectedFileName}
           closeModal={closeModal}

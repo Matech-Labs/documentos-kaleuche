@@ -2,12 +2,13 @@ import { google } from "googleapis";
 const path = require("path");
 const fs = require("fs");
 
+//Generar variables de entorno para estos tokens
 const CLIENT_ID =
   "445048192640-fpd9eiig42ufof1hhtu1i54e5l1qrfmo.apps.googleusercontent.com";
 const CLIENT_SECRET = "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";
 const REDIRECT_URI = "https://developers.google.com/oauthplayground";
 const REFRESH_TOKEN =
-  "1//04TOu_PKzfHnSCgYIARAAGAQSNwF-L9IrJxeUwaeuyl_PXPL9ZhaOmr0ELgxYcbXzRv46M7K2cP91VKpoPbgHH57EazuW2BMoiT0";
+  "1//04yutuYcb1PytCgYIARAAGAQSNwF-L9IrqKQfNYdb54_EHzStg8BYavZXWFa_Sq5tAyBFVgDtyJZK3iaVPNBAiasilgO-rx0VlGQ";
 
 const oauth2Client = new google.auth.OAuth2(
   CLIENT_ID,
@@ -62,7 +63,7 @@ async function listDriveStructure(folderId = "root") {
 
     return folderMap;
   } catch (error) {
-    // console.log(error.response.data);
+    console.log(error.response.data);
     return null; // Manejo de error personalizado
   }
 }
