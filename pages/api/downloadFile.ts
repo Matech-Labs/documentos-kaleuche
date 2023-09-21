@@ -37,9 +37,7 @@ const handler = async (req: NextApiRequest, nextResponse: NextApiResponse) => {
     );
 
     driveResponse.data
-      .on("end", () => {
-        console.log(`Descargado "${fileName}"`);
-      })
+      .on("end", () => {})
       .on("error", (err) => {
         console.error("Error al descargar el archivo:", err);
       })
