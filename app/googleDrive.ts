@@ -1,11 +1,11 @@
 import { google } from "googleapis";
+const path = require("path");
+const fs = require("fs");
 
-const CLIENT_ID =
-  "445048192640-fpd9eiig42ufof1hhtu1i54e5l1qrfmo.apps.googleusercontent.com";
-const CLIENT_SECRET = "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";
-const REDIRECT_URI = "https://developers.google.com/oauthplayground";
-const REFRESH_TOKEN =
-  "1//04TOu_PKzfHnSCgYIARAAGAQSNwF-L9IrJxeUwaeuyl_PXPL9ZhaOmr0ELgxYcbXzRv46M7K2cP91VKpoPbgHH57EazuW2BMoiT0";
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const REDIRECT_URI = process.env.REDIRECT_URI;
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
 
 const oauth2Client = new google.auth.OAuth2(
   CLIENT_ID,
@@ -15,7 +15,7 @@ const oauth2Client = new google.auth.OAuth2(
 
 oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
-const drive = google.drive({
+export const drive = google.drive({
   version: "v3",
   auth: oauth2Client,
 });
@@ -34,12 +34,21 @@ async function listDriveStructure(folderId = "root") {
       q: `'${folderId}' in parents`,
       fields: "files(id, name, mimeType)",
     });
+
+    if (!filesList || !filesList?.data || !filesList.data.files) {
+      return null; // Manejo de error personalizado
+    }
+
     if (filesList.data.files.length === 0) {
       return folderMap;
     }
 
     for (const file of filesList.data.files) {
       if (file.mimeType === "application/vnd.google-apps.folder") {
+        if (!file || !file.id || !file.name) {
+          return null; // Manejo de error personalizado
+        }
+
         // Si es una carpeta, llama a la función recursivamente
         folderMap[file.name] = await listDriveStructure(file.id);
       } else {

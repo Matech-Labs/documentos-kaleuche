@@ -1,0 +1,17 @@
+// [------------------------------ Z-INDEX LEVELS ------------------------------]
+
+$z-index-base: 1;
+$z-index-modal: 5;
+$z-index-modal-confirmation: 10;
+
+// [------------------------------ GLOBAL CLASSES ------------------------------]
+
+.hide-scroll {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none;
+}
+
+.hide-scroll::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+
