@@ -1,10 +1,10 @@
 import Home from "../components/Home/Home";
-import jsonData from "./fileParse/page";
+import createJSONData from "./fileParse/createJSONData";
 
 const HomePage = async () => {
-  const response = await jsonData();
+  const jsonData = await createJSONData();
 
-  return <Home data={response} />;
+  return <Home data={jsonData} />;
 };
 
 export default HomePage;

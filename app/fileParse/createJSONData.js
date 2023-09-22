@@ -1,6 +1,8 @@
+// fileParse/page.js
+
 import { getData } from "../googleDrive";
 
-const page = async () => {
+const createJSONData = async () => {
   const data = await getData();
 
   // Función recursiva para crear la estructura de carpetas y archivos
@@ -45,4 +47,4 @@ const page = async () => {
   return root;
 };
 
-export default page;
+export default createJSONData;
