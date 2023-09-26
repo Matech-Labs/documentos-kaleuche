@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import styles from "./DownloadButton.module.scss";
 
 export const DownloadFolder = ({ file }) => {
   const { id, name, extension } = file;
@@ -12,7 +13,6 @@ export const DownloadFolder = ({ file }) => {
       const response = await fetch(`/api/generateFolderLink?id=${id}`);
 
       if (response.ok) {
-        
       } else {
       }
     } catch (error) {
@@ -22,8 +22,12 @@ export const DownloadFolder = ({ file }) => {
   };
 
   return (
-    <button onClick={handleClick} disabled={isLoading}>
-      {"Descargar Carpeta"}
+    <button
+      onClick={handleClick}
+      disabled={isLoading}
+      className={styles.button}
+    >
+      Descargar carpeta
     </button>
   );
 };

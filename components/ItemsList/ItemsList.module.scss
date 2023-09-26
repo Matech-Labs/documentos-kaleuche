@@ -2,15 +2,15 @@
 
 .container {
   width: 100%;
-  max-width: 800px; 
   margin: 0 auto;
 }
 
 .fileList {
+  color: $black;
   list-style: none;
   padding: 0;
   max-height: 400px; /* Ajusta la altura máxima a 400px */
-  overflow-y: auto; 
+  overflow-y: auto;
   scrollbar-width: thin; /* Establece el ancho del scrollbar (puede ser "auto") */
   scrollbar-color: #888 #f0f0f0;
   overflow-x: hidden;
@@ -43,11 +43,10 @@
   align-items: center;
   padding: 5px;
   border: 1px solid $gray;
-  width: 400px;
-  margin: 4px ;
+  margin: 4px;
 }
 
-.pdfListItem:hover{
+.pdfListItem:hover {
   box-shadow: 0 2px 8px #bbb;
 }
 
@@ -55,23 +54,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-grow: 1; 
+  flex-grow: 1;
 }
 
-.fileName {
-  font-weight: bold;
-}
-
-.leftFileContainer{
+.leftFileContainer {
   display: flex;
   align-items: center;
 }
 
-.leftFileContainer img{
+.leftFileContainer img {
   margin-right: 5px;
 }
 
-.icon{
+.icon {
   height: 24px;
   width: 24px;
 }

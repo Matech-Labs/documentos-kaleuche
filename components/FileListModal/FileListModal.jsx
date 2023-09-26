@@ -5,6 +5,7 @@ import exitIcon from "@assets/images/icons/exitIcon.png";
 import Image from "next/image";
 import Spinner from "../ui/Spinner/Spinner";
 import { ConfirmationModal } from "../ConfirmationModal/ConfirmationModal";
+import { DownloadFolder } from "../ui/buttons/DownloadButton/DownloadFolder";
 
 const FileListModal = ({ folderId, files, fileName, closeModal }) => {
   const [googleLink, setGoogleLink] = useState("");
@@ -41,14 +42,12 @@ const FileListModal = ({ folderId, files, fileName, closeModal }) => {
     setShowConfirmationModal(false);
   };
 
-  if (isLoading) return <Spinner />;
-
   return (
     <div className={styles.container}>
       <div className={styles.modalOverlay}>
         <div className={styles.modal}>
           <div className={styles.modalHeader}>
-            <div>{fileName}</div>
+            <span>{fileName}</span>
             <Image
               src={exitIcon}
               alt="exitIcon"
@@ -57,12 +56,18 @@ const FileListModal = ({ folderId, files, fileName, closeModal }) => {
             />
           </div>
           <div className={styles.modalContent}>
-            <ItemsList files={files} />
+            {isLoading ? (
+              <div className={styles.spinnerContainer}>
+                <Spinner />
+              </div>
+            ) : (
+              <ItemsList files={files} />
+            )}
           </div>
           <div className={styles.downloadAll}>
-            <div onClick={handleDownloadClick}>
-              <button>Descargar Carpeta</button>
-            </div>
+            <button onClick={handleDownloadClick} className={styles.button}>
+              Descargar carpeta
+            </button>
           </div>
         </div>
       </div>

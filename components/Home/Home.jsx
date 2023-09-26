@@ -27,6 +27,7 @@ const Home = ({ data }) => {
     setSelectedFileName(item.id);
     setModalOpen(true);
   };
+
   const handleOpenInfoModal = () => {
     setInfoModal(true);
   };
@@ -50,7 +51,7 @@ const Home = ({ data }) => {
         {antecedentesOpen && (
           <>
             <div className={styles.infoButton} onClick={handleOpenInfoModal}>
-              <p>Información útil para la búsqueda de antecedentes</p>
+              <span>Información útil para la búsqueda de antecedentes</span>
               <Image
                 src={infoIcon}
                 alt="infoIcon"
