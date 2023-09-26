@@ -3,7 +3,10 @@
 import React, { useState } from "react";
 import styles from "./Home.module.scss";
 import FileListModal from "../FileListModal/FileListModal";
+import InfoModal from "../InfoModal/InfoModal";
 import useCloseOnEsc from "@hooks/useCloseOnEsc";
+import Image from "next/image";
+import infoIcon from "@assets/images/icons/infoIcon.png";
 
 const Home = ({ data }) => {
   const jsonData = data.children[0].children;
@@ -16,6 +19,7 @@ const Home = ({ data }) => {
   const [selectedFileName, setSelectedFileName] = useState(null);
   const [folderId, setFolderId] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [infoModal, setInfoModal] = useState(false);
 
   const handleOpenModal = (item) => {
     setFolderId(item.children[0].id);
@@ -23,9 +27,13 @@ const Home = ({ data }) => {
     setSelectedFileName(item.id);
     setModalOpen(true);
   };
+  const handleOpenInfoModal = () => {
+    setInfoModal(true);
+  };
 
   const closeModal = () => {
     setModalOpen(false);
+    setInfoModal(false);
   };
 
   useCloseOnEsc(closeModal);
@@ -33,6 +41,36 @@ const Home = ({ data }) => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.leftContent}>
+        <div
+          className={styles.button}
+          onClick={() => setAntecedentesOpen(!antecedentesOpen)}
+        >
+          {antecedentes.id}
+        </div>
+        {antecedentesOpen && (
+          <>
+            <div className={styles.infoButton} onClick={handleOpenInfoModal}>
+              <p>Información útil para la búsqueda de antecedentes</p>
+              <Image
+                src={infoIcon}
+                alt="infoIcon"
+                className={styles.infoIcon}
+              />
+            </div>
+            {antecedentes.children.map((item) => (
+              <div
+                key={item.id}
+                className={styles.subFoldersButton}
+                onClick={() => handleOpenModal(item)}
+              >
+                {item.id}
+              </div>
+            ))}
+          </>
+        )}
+      </div>
+
+      <div className={styles.rightContent}>
         <div
           className={styles.button}
           onClick={() => setInformesOpen(!informesOpen)}
@@ -50,26 +88,7 @@ const Home = ({ data }) => {
             </div>
           ))}
       </div>
-
-      <div className={styles.rightContent}>
-        <div
-          className={styles.button}
-          onClick={() => setAntecedentesOpen(!antecedentesOpen)}
-        >
-          {antecedentes.id}
-        </div>
-        {antecedentesOpen &&
-          antecedentes.children.map((item) => (
-            <div
-              key={item.id}
-              className={styles.subFoldersButton}
-              onClick={() => handleOpenModal(item)}
-            >
-              {item.id}
-            </div>
-          ))}
-      </div>
-
+      {infoModal && <InfoModal closeModal={closeModal} />}
       {modalOpen && (
         <FileListModal
           folderId={folderId}

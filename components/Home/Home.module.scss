@@ -5,7 +5,6 @@
   justify-content: center;
   text-align: center;
   width: 100%;
-  
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -68,6 +67,8 @@
   border-radius: 10px; // Agrega bordes redondeados
   cursor: pointer;
   background-color: $white;
+  color: $black;
+  font-weight: $regular;
   transition: all 0.2s ease-in-out 0ms;
   user-select: none;
   margin-bottom: 20px;
@@ -76,6 +77,38 @@
     min-width: 120px;
     font-size: 14px;
   }
+}
+
+.infoButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  min-width: 250px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px -20px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out 0ms;
+  user-select: none;
+  text-align: center;
+  background-color: #e9c46a;
+  color: $white;
+  margin-bottom: 20px;
+  padding: 5px;
+  font-weight: $medium;
+
+  @media (max-width: 768px) {
+    min-width: 250px; // Adjusted min-width for mobile view
+    font-size: 14px; // Adjusted font size for mobile view
+  }
+}
+
+.infoIcon{
+  height: 24px;
+  width: 24px;
+  fill: $white;
 }
 
 .subFoldersButton {
@@ -88,9 +121,11 @@
   box-shadow: 0px 0px 20px -20px;
   cursor: pointer;
   background-color: $white;
+  color: $black;
+  font-weight: $regular;
   transition: all 0.1s ease-in-out 0ms;
   user-select: none;
-  text-align: left;
+  text-align: center;
 
   @media (max-width: 768px) {
     min-width: 250px; // Adjusted min-width for mobile view
