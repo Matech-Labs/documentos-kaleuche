@@ -27,7 +27,8 @@
   max-width: 900px;
 
   @media (max-width: 768px) {
-      margin: 15px;
+      margin-left: 5px;
+      margin-right: 5px;
       max-width: calc(100% - 10px);
   } 
 }

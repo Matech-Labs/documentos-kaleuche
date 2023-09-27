@@ -39,11 +39,16 @@
 
 .pdfListItem {
   display: flex;
+  min-width: 300px;
   justify-content: space-between;
   align-items: center;
   padding: 5px;
   border: 1px solid $gray;
   margin: 4px;
+
+  @media (max-width: 768px) {
+  min-width: 310px;
+  }
 }
 
 .pdfListItem:hover {
