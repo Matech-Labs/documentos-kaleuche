@@ -1,10 +1,26 @@
+@import "@scss/styleguide";
+
 .bodyContainer{
-    font-family: sans-serif;
-    background-color: rgba(0,0,0,.1);;
+  font-family: sans-serif;
+  background: $gradientBlue;
+  height: 100vh;
+  margin: 0;
+  padding: 0 20%;
+  color: $white;
+  @media (max-width: 768px) {
+    height: auto;
+  } 
 }
 
 .mainTitle{
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 50px ;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 50px;
+  @media (max-width: 768px) {
+    font-size: 40px;
+  } 
+}
+
+.subtitle{
+  padding-bottom: 20px;
 }

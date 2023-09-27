@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import styles from "./DownloadButton.module.scss";
 
 export const DownloadButton = ({ file }) => {
   const { id, name, extension } = file;
@@ -30,7 +31,11 @@ export const DownloadButton = ({ file }) => {
   };
 
   return (
-    <button onClick={handleClick} disabled={isLoading}>
+    <button
+      onClick={handleClick}
+      disabled={isLoading}
+      className={styles.button}
+    >
       {isLoading ? "Cargando..." : "Descargar"}
     </button>
   );

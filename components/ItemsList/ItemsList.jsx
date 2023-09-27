@@ -20,7 +20,7 @@ function ItemsList({ files }) {
                   alt="icon"
                   className={styles.icon}
                 />
-                <span className={styles.fileName}>{file.name}</span>
+                <span>{file.name}</span>
               </div>
               <div className={styles.buttons}>
                 <DownloadButton file={file} />
