@@ -63,7 +63,7 @@ const Home = ({ data }) => {
               .slice()
               .sort((a, b) => b.id.localeCompare(a.id))
               .map((item) => (
-                <>
+                <div className={styles.subFolders} key={item.id}>
                   {item.id === "El fideicomiso" ? (
                     <>
                       <div
@@ -85,7 +85,6 @@ const Home = ({ data }) => {
                     </>
                   ) : (
                     <div
-                      key={item.id}
                       className={styles.subFoldersButton}
                       onClick={() => {
                         handleOpenModal(item);
@@ -94,7 +93,7 @@ const Home = ({ data }) => {
                       {item.id}
                     </div>
                   )}
-                </>
+                </div>
               ))}
           </>
         )}
