@@ -18,6 +18,7 @@
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  color: $black;
 }
 
 .confirmationModal p {
@@ -25,11 +26,23 @@
   padding: 0;
 }
 
-.confirmationModal button {
-  margin-top: 10px;
+.buttonsContainer{
+  padding-top: 20px;
 }
 
-.confirmationModal button {
-  margin-top: 10px; /* Espacio arriba */
-  margin-bottom: 10px; /* Espacio abajo */
+.buttonsContainer button {
+  color: #fff;
+  border: none;
+  padding: 6px 15px;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.cancelButton{
+  background-color: $danger;
+}
+
+.driveButton{
+  background: $gradientBlue;
 }

@@ -7,8 +7,14 @@ export const ConfirmationModal = ({ handleConfirmation, handleCancel }) => {
       <div className={styles.confirmationModalContent}>
         <p>Usted esta por ser redirigido a Google Drive.</p>
         <p>¿Desea Continuar?</p>
-        <button onClick={handleConfirmation}>OK</button>
-        <button onClick={handleCancel}>Cancelar</button>
+        <div className={styles.buttonsContainer}>
+          <button className={styles.cancelButton} onClick={handleCancel}>
+            Cancelar
+          </button>
+          <button className={styles.driveButton} onClick={handleConfirmation}>
+            Ir a Drive
+          </button>
+        </div>
       </div>
     </div>
   );

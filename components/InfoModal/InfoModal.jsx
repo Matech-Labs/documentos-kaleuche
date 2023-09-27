@@ -6,7 +6,7 @@ import exitIcon from "@assets/images/icons/exitIcon.png";
 const InfoModal = ({ closeModal }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.modalOverlay}>
+      <div className={styles.modalOverlay} onClick={closeModal}>
         <div className={styles.modal}>
           <div className={styles.modalHeader}>
             <div>Información</div>
@@ -55,20 +55,26 @@ const InfoModal = ({ closeModal }) => {
             </p>
             <p>Para simplifcarte la búsqueda de la escritura, te contamos:</p>
             <p>
-              a) Si estás en manzanas 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 o
-              13, los lotes fueron originalmente comprados por Jorge Tejerina,
-              por escritura 156.
+              a) Si estás en
+              <b> manzanas 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 o 13</b>, los
+              lotes fueron originalmente comprados por <b> Jorge Tejerina</b>,
+              por <b> escritura 156</b>.
             </p>
             <p>
               En este caso tenés que tener en cuenta que Tejerina compró una
               sola fracción y luego la dividió por plano 2312-0071/76
             </p>
             <p>
-              b) Si estás en manzanas 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,
-              24, 25, 26, 27, 28 y 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39,
-              40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55,
-              56, 57, 58, 59 o 60, los lotes fueron comprados originalmente por
-              Jorge Tejerina, por escritura 378.
+              b) Si estás en
+              <b>
+                {" "}
+                manzanas 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
+                28 y 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43,
+                44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59 o
+                60
+              </b>
+              , los lotes fueron comprados originalmente por{" "}
+              <b>Jorge Tejerina</b>, por escritura <b>378</b>.
             </p>
             <p>
               En este caso, tenés que tener en cuenta que Tejerina compró tres
@@ -76,29 +82,37 @@ const InfoModal = ({ closeModal }) => {
               2312-0123/76 y 2312-0082/76.
             </p>
             <p>
-              c) Si estás en manzanas 61, 62, 63, 64, 65, 66, 67, 68, 69 o 70,
-              entonces los lotes fueron comprados originalmente por La Vertiente
-              Andina S.A., por escritura 379.
+              c) Si estás en{" "}
+              <b>manzanas 61, 62, 63, 64, 65, 66, 67, 68, 69 o 70</b>, entonces
+              los lotes fueron comprados originalmente por{" "}
+              <b>La Vertiente Andina S.A.</b>, por <b>escritura 379</b>.
             </p>
             <p>
               En este caso, tenés que tener en cuenta que La Vertiente Andina
               compró un solo lote y luego lo dividió por plano 2312-0156/76
             </p>
             <p>
-              d) Si estás en las Manzanas 99; 100, 101; 102, 103; 104; 105; 106,
-              107; 108; 109; 110; 111, 112, 117; 118; 119, los lotes fueron
-              originalmente comprados por Marcelo Augusto Chavanne, por
-              escrituras 955 y 655.
+              d) Si estás en las{" "}
+              <b>
+                Manzanas 99; 100, 101; 102, 103; 104; 105; 106, 107; 108; 109;
+                110; 111, 112, 117; 118; 119
+              </b>
+              , los lotes fueron originalmente comprados por{" "}
+              <b>Marcelo Augusto Chavanne</b>, por <b>escrituras 955 y 655</b>.
             </p>
             <p>
-              e) Si estás en manzana 112 (lotes 14 al 27) 113 (lotes 1 al 16)
-              114 (lotes 1 al 9 y 11 al 25), 115 (lotes 1 al 17), los lotes
-              fueron originalmente comprados por Santiago Palmieri, por
-              escrituras 1001 y 719
+              e) Si estás en{" "}
+              <b>
+                manzana 112 (lotes 14 al 27) 113 (lotes 1 al 16) 114 (lotes 1 al
+                9 y 11 al 25), 115 (lotes 1 al 17)
+              </b>
+              , los lotes fueron originalmente comprados por{" "}
+              <b>Santiago Palmieri</b>, por <b>escrituras 1001 y 719</b>
             </p>
             <p>
-              f) Si estás en la Manzana 133, los lotes fueron originalmente
-              comprados por Carlos Federico Chavanne, por escritura 868.
+              f) Si estás en la <b>Manzana 133</b>, los lotes fueron
+              originalmente comprados por <b>Carlos Federico Chavanne</b>, por
+              <b>escritura 868</b>.
             </p>
           </div>
         </div>

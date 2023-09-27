@@ -71,7 +71,6 @@ const FileListModal = ({ folderId, files, fileName, closeModal }) => {
           </div>
         </div>
       </div>
-      {/* Modal de confirmación */}
       {showConfirmationModal && (
         <ConfirmationModal
           handleConfirmation={handleConfirmation}

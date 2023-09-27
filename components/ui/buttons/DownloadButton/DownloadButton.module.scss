@@ -1,13 +1,15 @@
+@import "@scss/styleguide";
+
 .icon {
   height: 24px;
   width: 24px;
 }
 
 .button {
-  background: linear-gradient(#032f5c, #2d4d74);
-  border: 1px solid white;
+  background: $gradientBlue;
+  border: 1px solid $white;
   border-radius: 5px;
-  color: white;
+  color: $white;
   cursor: pointer;
   padding: 10px;
 }

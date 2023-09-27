@@ -15,6 +15,7 @@ const Home = ({ data }) => {
 
   const [informesOpen, setInformesOpen] = useState(false);
   const [antecedentesOpen, setAntecedentesOpen] = useState(false);
+  const [fideicomisoOpen, setFideicomisoOpen] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [selectedFileName, setSelectedFileName] = useState(null);
   const [folderId, setFolderId] = useState(null);
@@ -51,22 +52,50 @@ const Home = ({ data }) => {
         {antecedentesOpen && (
           <>
             <div className={styles.infoButton} onClick={handleOpenInfoModal}>
-              <span>Información útil para la búsqueda de antecedentes</span>
+              <span>Información útil para la búsqueda</span>
               <Image
                 src={infoIcon}
                 alt="infoIcon"
                 className={styles.infoIcon}
               />
             </div>
-            {antecedentes.children.map((item) => (
-              <div
-                key={item.id}
-                className={styles.subFoldersButton}
-                onClick={() => handleOpenModal(item)}
-              >
-                {item.id}
-              </div>
-            ))}
+            {antecedentes.children
+              .slice()
+              .sort((a, b) => b.id.localeCompare(a.id))
+              .map((item) => (
+                <>
+                  {item.id === "El fideicomiso" ? (
+                    <>
+                      <div
+                        className={`${styles.subFoldersButton} ${styles.fideicomisoButton}`}
+                        onClick={() => setFideicomisoOpen(!fideicomisoOpen)}
+                      >
+                        {item.id}
+                      </div>
+                      {fideicomisoOpen &&
+                        item.children.map((subItem) => (
+                          <div
+                            key={subItem.id}
+                            className={styles.subItemFoldersButton}
+                            onClick={() => handleOpenModal(subItem)}
+                          >
+                            {subItem.id}
+                          </div>
+                        ))}
+                    </>
+                  ) : (
+                    <div
+                      key={item.id}
+                      className={styles.subFoldersButton}
+                      onClick={() => {
+                        handleOpenModal(item);
+                      }}
+                    >
+                      {item.id}
+                    </div>
+                  )}
+                </>
+              ))}
           </>
         )}
       </div>
