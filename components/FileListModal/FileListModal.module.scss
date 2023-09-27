@@ -24,6 +24,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   @media (max-width: 768px) {
     margin-left: 5px; 
@@ -34,11 +35,14 @@
 .modalHeader {
   color: $black;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+  padding: 20px 0;
   border-bottom: 1px solid $gray;
   font-weight: $medium;
+  width: 100%;
+}
+
+.modalHeader span{
+  padding-left: 10px;
 }
 
 .modalContent {
@@ -80,10 +84,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 20px 0;
   border-top: 1px solid $gray;
   background-color: $white;
   margin-top: 10px;
+  width: 100%;
 }
 
 .downloadText {

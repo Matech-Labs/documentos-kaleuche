@@ -61,6 +61,6 @@ async function listDriveStructure(folderId = "root") {
     return folderMap;
   } catch (error) {
     console.log(error.response.data);
-    return null; // Manejo de error personalizado
+    return null;
   }
 }

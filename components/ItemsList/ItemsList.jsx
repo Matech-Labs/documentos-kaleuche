@@ -6,12 +6,14 @@ import { DownloadButton } from "../ui/buttons/DownloadButton/DownloadButton";
 import Image from "next/image";
 
 function ItemsList({ files }) {
-  const filteredFiles = files.filter((file) => file.extension !== ".DS_Store");
+  const filteredAndSortedFiles = files
+    .filter((file) => file.extension !== ".DS_Store")
+    .sort((a, b) => parseInt(a.name) - parseInt(b.name));
 
   return (
     <div className={styles.container}>
       <ul className={styles.fileList}>
-        {filteredFiles.map((file, index) => (
+        {filteredAndSortedFiles.map((file, index) => (
           <li key={index} className={styles.pdfListItem}>
             <div className={styles.fileInfo}>
               <div className={styles.leftFileContainer}>

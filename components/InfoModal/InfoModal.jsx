@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./InfoModal.module.scss";
 import Image from "next/image";
 import exitIcon from "@assets/images/icons/exitIcon.png";
 
 const InfoModal = ({ closeModal }) => {
+  const modalRef = useRef(null);
+
+  const handleModalClick = (event) => {
+    if (event.target === modalRef.current) {
+      closeModal();
+    }
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.modalOverlay} onClick={closeModal}>
+      <div
+        className={styles.modalOverlay}
+        ref={modalRef}
+        onClick={handleModalClick}
+      >
         <div className={styles.modal}>
           <div className={styles.modalHeader}>
             <div>Información</div>

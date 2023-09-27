@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./FileListModal.module.scss";
 import ItemsList from "../ItemsList/ItemsList";
 import exitIcon from "@assets/images/icons/exitIcon.png";
 import Image from "next/image";
 import Spinner from "../ui/Spinner/Spinner";
 import { ConfirmationModal } from "../ConfirmationModal/ConfirmationModal";
-import { DownloadFolder } from "../ui/buttons/DownloadButton/DownloadFolder";
 
 const FileListModal = ({ folderId, files, fileName, closeModal }) => {
   const [googleLink, setGoogleLink] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+  const modalRef = useRef(null);
 
   useEffect(() => {
     setIsLoading(true);
@@ -19,7 +19,6 @@ const FileListModal = ({ folderId, files, fileName, closeModal }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setGoogleLink(data.webViewLink);
         setIsLoading(false);
       })
@@ -42,9 +41,19 @@ const FileListModal = ({ folderId, files, fileName, closeModal }) => {
     setShowConfirmationModal(false);
   };
 
+  const handleModalClick = (event) => {
+    if (event.target === modalRef.current) {
+      closeModal();
+    }
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.modalOverlay}>
+      <div
+        className={styles.modalOverlay}
+        ref={modalRef}
+        onClick={handleModalClick}
+      >
         <div className={styles.modal}>
           <div className={styles.modalHeader}>
             <span>{fileName}</span>
