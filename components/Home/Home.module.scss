@@ -73,11 +73,6 @@
   transition: all 0.2s ease-in-out 0ms;
   user-select: none;
   margin-bottom: 20px;
-
-  @media (max-width: 768px) {
-    min-width: 120px;
-    font-size: 14px;
-  }
 }
 
 .infoButton {
@@ -95,11 +90,6 @@
   margin-bottom: 25px;
   font-weight: $medium;
   text-decoration: underline;
-
-  @media (max-width: 768px) {
-    min-width: 250px; // Adjusted min-width for mobile view
-    font-size: 14px; // Adjusted font size for mobile view
-  }
 }
 
 .infoIcon {
@@ -124,11 +114,6 @@
   transition: all 0.1s ease-in-out 0ms;
   user-select: none;
   text-align: center;
-
-  @media (max-width: 768px) {
-    min-width: 250px; // Adjusted min-width for mobile view
-    font-size: 14px; // Adjusted font size for mobile view
-  }
 }
 
 .subFoldersButton:hover {
@@ -151,11 +136,6 @@
   transition: all 0.1s ease-in-out 0ms;
   user-select: none;
   text-align: center;
-
-  @media (max-width: 768px) {
-    min-width: 250px; // Adjusted min-width for mobile view
-    font-size: 14px; // Adjusted font size for mobile view
-  }
 }
 
 .fideicomisoButton{
