@@ -65,6 +65,7 @@
 .leftFileContainer {
   display: flex;
   align-items: center;
+  text-align: left;
 }
 
 .leftFileContainer img {
@@ -80,6 +81,7 @@
   display: flex;
   border-left: 10px;
   border-color: $black;
+  margin-left: 5px;
 }
 
 .previewButton,
