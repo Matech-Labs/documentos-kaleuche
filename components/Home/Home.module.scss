@@ -48,7 +48,6 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
-  margin-top: 20px;
 
   @media (max-width: 768px) {
     margin-top: 10px; // Adjusted margin for mobile view
@@ -136,6 +135,7 @@
 }
 
 .subItemFoldersButton{
+  align-items: center;
   width: fit-content;
   min-width: 190px;
   max-width: 190px;
